@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Interactive card details form</title>
+
+</head>
+<body>
+
+  <main>
+    <section class="leftcard">
+    <div class="card">
+    <div class="card__front">  
+    <img src="./images/bg-card-front.png" alt="" class="card__front__img">
+    <img src="./images/card-logo.svg" alt="" class="card__front__logo">
+    <p class="cardnumber-show">  0000 0000 0000 0000</p>
+    <p class="cardholder-show">  Jane Appleseed</p>
+    <p class="expirymonth-show">  00</p>
+    <p class="expiry-space">/</p>
+    <p class="expiryyear-show">00</p>
+
+
+    </div>
+    <div class="card__back">
+      <img src="./images/bg-card-back.png" alt="" class="card__back__img"> 
+    <p class="cvc-show">000</p>
+
+    </div>
+    </div>
+
+    </section>
+
+    <section class="form">
+      <form id="form" action="">
+        <label for="cardholder-name" class="cardholder-name">  Cardholder Name</label>
+        <input type="text" id="cardholder" placeholder="e.g. Jane Appleseed" oninput="inputcardholder()">
+        <p class="perror" id="error"></p>
+
+        <label for="cardnumber" class="cardnumber"> Card Number</label>
+        <input type="text" id="cardnumber"  placeholder="e.g. 1234 5678 9123 0000" oninput="inputcardnumber()" maxlength="28">
+        <p class="perror" id="errorcard"></p>
+
+        <div class="exp">
+          <div class="expcontainerone">
+          <label for="expiry-date" class="expiry-date">Exp. Date (MM/YY)</label> 
+          <input id="expm" type="text" class="expiry" placeholder="MM" oninput="inputmm()" maxlength="2">
+          <input id="expy" type="text" class="expiry" placeholder="YY" oninput="inputyy()" maxlength="2">
+          <p class="perror" id="exp-error"></p>
+          </div>
+
+          <div class="expcontainer">
+          <label for="cvc" class="cvc">CVC</label>
+          <input id="cvc" type="text" class="expiry-cvc" placeholder="e.g. 123" oninput="inputcvc()" maxlength="3">
+          <p class="perror" id="cvc-error"></p>
+
+        </div>
+        </div>
+        <button type="submit">Confirm</button>
+
+      </form>
+
+      <div class="thank">
+        <img src="./images/icon-complete.svg" alt="">
+  <h1>Thank you!</h1>
+  <p>We've added your card details</p>
+  <button>Continue</button>
+      </div>
+
+    </section>
+  </main>
+
+<script>
+  const cardholder = document.getElementById('cardholder');
+  const cardnumber = document.getElementById('cardnumber');
+  const expm = document.getElementById('expm');
+  const expy = document.getElementById('expy');
+  const cvc = document.getElementById('cvc');
+  const cardholdererror = document.getElementById('error');
+  const cardnumbererror = document.getElementById('errorcard')
+  const experror = document.getElementById('exp-error');
+  const cvcerror = document.getElementById('cvc-error');
+  const form = document.getElementById('form');
+
+
+  const cardholderShow = document.querySelector('.cardholder-show');
+  const cardnumberShow = document.querySelector('.cardnumber-show');
+  const expirymonth = document.querySelector('.expirymonth-show');
+  const expiryyear = document.querySelector('.expiryyear-show');
+  const cvcshow = document.querySelector('.cvc-show');
+  const thank = document.querySelector('.thank');
+
+
+  const errors = document.querySelectorAll('.perror');
+
+
+  form.addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    if (cardholder.value == '') {
+      cardholder.classList.add("error");
+      cardholdererror.textContent ="Can't be blank";
+    }
+    else {
+      cardholder.classList.remove("error");
+      cardholdererror.textContent = "";
+    }
+
+    
+
+    if (cardnumber.value == '') {
+      cardnumber.classList.add("error");
+      cardnumbererror.textContent = "Can't be blank";
+    }
+
+
+    else if (!onlyNumbers(cardnumber.value) ) {
+      cardnumber.classList.add("error");
+      cardnumbererror.textContent ="Wrong format, numbers only";
+    }
+
+    else {
+      cardnumber.classList.remove("error");
+      cardnumbererror.textContent = "";
+    }
+
+
+    if (cvc.value == '') {
+      cvc.classList.add("error");
+      cvcerror.textContent = "Can't be blank";
+    }
+
+
+    else if (!onlyNumbers(cvc.value) ) {
+      cvc.classList.add("error");
+      cvcerror.textContent ="Wrong format, numbers only";
+    }
+
+    else {
+      cvc.classList.remove("error");
+      cvcerror.textContent = "";
+    }
+
+
+    if (expm.value == '') {
+      expm.classList.add("error");
+      experror.textContent = "Can't be blank";
+    }
+
+
+    else if (!onlyNumbers(expm.value) ) {
+      expm.classList.add("error");
+      experror.textContent ="Wrong format, numbers only";
+    }
+
+    else {
+      expm.classList.remove("error");
+      experror.textContent = "";
+    }
+
+    if (expy.value == '') {
+      expy.classList.add("error");
+      experror.textContent = "Can't be blank";
+    }
+
+
+    else if (!onlyNumbers(expy.value) ) {
+      expy.classList.add("error");
+      experror.textContent ="Wrong format, numbers only";
+    }
+
+    else {
+      expy.classList.remove("error");
+      experror.textContent = "";
+    }
+
+
+
+  })
+
+
+
+  form.addEventListener('submit', function(e) {
+
+    if (iferrors(errors)) {
+      form.classList.add('hide');
+      thank.style.display = "block";
+    }
+  })
+
+
+function iferrors(errors) {
+    var error = true;
+    errors.forEach(function(element) {
+        if (!element.textContent == "") {
+            error = false;
+        }
+    });
+
+    return error;
+}
+
+
+function onlyNumbers(str) {
+  return /^[\d ]*$/.test(str);
+}
+
+function inputcardholder() {
+  let cardholdervalue = cardholder.value;
+
+  cardholderShow.innerHTML = cardholdervalue;
+
+}
+
+
+function inputcardnumber() {
+
+  if (cardnumber.value.length > 0) {
+    
+    if (cardnumber.value.length % 4 == 0 ) {
+
+        cardnumber.value += "    ";
+  }
+}
+  cardnumberShow.innerHTML = cardnumber.value;
+
+}
+
+function inputmm() {
+
+  expirymonth.innerHTML = expm.value;
+
+
+}
+
+function inputyy() {
+
+    expiryyear.innerHTML = expy.value;
+
+}
+
+function inputcvc() {
+
+    cvcshow.innerHTML = cvc.value;
+
+}
+
+
+
+
+</script>
+
+</body>
+</html>

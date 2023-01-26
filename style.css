@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	max-width: 1440px;
+	width: 80%;
+	background: url('./images/bg-main-desktop.png') no-repeat;
+	background-size: 30% 100%;
+	height: 100vh;
+	margin: 0 auto;
+	font-size: 18px;
+	font-family: Space Grotesk, sans-serif;
+}
+
+main {
+	/*height: 100vh;*/
+	display: flex;
+	/*align-items: center;*/
+
+}
+
+.leftcard {
+	width: 50%;
+}
+
+.form {
+	width: 50%;
+	height: 450px;
+	margin-top: 15%;
+}
+
+.hide {
+	display: none;
+}
+
+.card {
+	position: relative;
+	}
+
+.card__front__img {
+	position: absolute;
+	left: -20px;
+	top: 100px;
+}
+
+
+.card__front__logo {
+	position: absolute;
+	left: 0px;
+	top: 120px;
+
+}
+
+.card__back__img {
+	position: absolute;
+	left: 85px;
+	top: 400px;
+}
+
+.card__front {
+position: relative;
+}
+
+
+
+.cardnumber-show {
+	position: absolute;
+	top: 220px;
+	left: 0px;
+	color: #fff;
+	font-size: 2.25rem;
+
+}
+
+.cardholder-show {
+	position: absolute;
+	top: 300px;
+	left: 0px;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.expirymonth-show {
+	position: absolute;
+	top: 300px;
+	left: 340px;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.expiry-space {
+	position: absolute;
+	top: 300px;
+	left: 365px;
+	color: #fff;
+	font-size: 1rem;
+}
+
+.expiryyear-show {
+	position: absolute;
+	top: 300px;
+	left: 375px;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.cvc-show {
+	position: absolute;
+	top: 510px;
+	left: 440px;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.cardholder-name, .cardnumber, .expiry-date
+{
+	display: block;
+	color: hsl(278, 68%, 11%);
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+
+}
+
+.cardnumber {
+	margin-top: 20px;
+}
+
+form {
+	width: 50%;
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid #6666;
+	outline: 0px;
+}
+
+input:focus {
+	outline: 0px solid hsl(249, 99%, 64%);
+	border-top-color: hsl(249, 99%, 64%);
+	border-right-color: hsl(278, 94%, 30%);
+	border-bottom-color: hsl(249, 99%, 64%);
+	border-left-color: hsl(278, 94%, 30%);
+}
+
+input:placeholder {
+	font-weight: 300;
+}
+
+.error {
+	border: 1px solid red;
+	color:red ;
+}
+
+.perror {
+	font-size: 0.75rem;
+	color: red;
+	margin-top:10px;
+}
+
+.expiry {
+	width: 30%;
+
+}
+
+.expiry-cvc {
+	width: 100%;
+
+}
+
+.cvc {
+	display: block;
+	color: hsl(278, 68%, 11%);
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+	/*margin-left: -100px;*/
+}
+
+.exp {
+	display: flex;
+	margin-top: 20px;
+}
+
+.expcontainer {
+	width: 50%;
+}
+
+.expcontainerone {
+	width: 70%;
+}
+
+button {
+/*	all: unset;*/
+	width: 100%;
+	padding: 15px 20px;
+	background-color: hsl(278, 68%, 11%);
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	margin-top: 30px;
+	font-size: 1.25rem;
+	cursor: pointer;
+}
+
+.thank {
+	display: none;
+	width: 50%;
+	height: 450px;
+	margin-top: 5%;
+	text-align: center;
+
+}
+
+.thank h1 {
+	text-transform: uppercase;
+	font-size: 2rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.thank p {
+	color: hsl(279, 6%, 55%);
+}
+
+
+@media screen and (max-width: 767px) {
+
+	body {
+		max-width: 375px;
+		width: 100%;
+		background: url('./images/bg-main-mobile.png') no-repeat;
+		background-size: 100% 30%;
+	}
+
+	main {
+		flex-direction: column;
+	}
+
+	.leftcard {
+	width: 100%;
+}
+
+
+	.card__front__img {
+	scale: 0.8;
+	position: absolute;
+	left: -60px;
+	top: 150px;
+	z-index: 2;
+}
+
+
+.card__front__logo {
+	scale: 0.8;
+	position: absolute;
+	left: 0px;
+	top: 190px;
+	z-index: 3;
+
+}
+
+.card__back__img {
+	scale: 0.8;
+	position: absolute;
+	left: -20px;
+	top: 20px;
+}
+
+.cardnumber-show {
+	
+	top: 280px;
+	left: 20px;
+	font-size: 1.5rem;
+	z-index: 3;
+	
+
+}
+
+.cardholder-show {
+	top: 330px;
+	left: 20px;
+	font-size: 0.75rem;
+	z-index: 3;
+
+}
+
+.expirymonth-show {
+	top: 330px;
+	left: 240px;
+	color: #fff;
+	font-size: 0.75rem;
+	z-index: 3;
+}
+
+.expiry-space {
+	top: 330px;
+	left: 260px;
+	font-size: 0.75rem;
+	z-index: 3;
+}
+
+.expiryyear-show {
+	top: 330px;
+	left: 270px;
+	font-size: 0.75rem;
+	z-index: 3;
+}
+
+.cvc-show {
+	top: 132px;
+	left: 310px;
+	color: #fff;
+	font-size: 0.75rem;
+
+}
+
+.form {
+	width: 100%;
+	margin-top: 430px;
+}
+
+form {
+	width: 100%;
+}
+
+.thank {
+
+	width: 100%;
+
+
+}
+
+
+}
